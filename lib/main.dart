@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:momanga/pages/ui/detail_page.dart';
 import 'package:momanga/pages/ui/home_page.dart';
+import 'package:momanga/pages/ui/reading_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: MyHomePage(),
+      home: ReadManga(),
     );
   }
 }

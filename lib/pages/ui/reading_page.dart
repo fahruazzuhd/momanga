@@ -4,7 +4,8 @@ import 'package:momanga/data/model/read_chapter.dart';
 import '../../data/api/api_service.dart';
 
 class ReadManga extends StatefulWidget {
-  const ReadManga({super.key});
+  const ReadManga({super.key, required this.data});
+  final String data;
 
   @override
   State<ReadManga> createState() => _ReadMangaState();
@@ -13,18 +14,26 @@ class ReadManga extends StatefulWidget {
 class _ReadMangaState extends State<ReadManga> {
 
   late Future<ReadChapter> _chapter;
+  String mangaTitle = "";
 
   @override
   void initState() {
     super.initState();
-    _chapter = ApiService().readChapter();
+    _chapter = ApiService().readChapter(widget.data);
+
+    _chapter.then((chapter) {
+      setState(() {
+        mangaTitle = chapter.title!;
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    print("ini data ${widget.data}");
     return Scaffold(
       appBar: AppBar(
-        title: Text('Judul baca manga'),
+        title: Text(mangaTitle),
       ),
       body: Column(
         children: [

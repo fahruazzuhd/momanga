@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:momanga/data/api/api_service.dart';
+import 'package:momanga/pages/ui/reading_page.dart';
 import 'package:momanga/pages/widget/expandable_text.dart';
 
 import '../../data/model/detail_manga.dart';
@@ -112,26 +113,17 @@ class _DetailPage extends State<DetailPage> {
                     ],
                   ),
                 ),
-                // ListView.builder(
-                //   itemCount: _detailManga!.chapter!.length,
-                //   itemBuilder: (context, index) {
-                //     return ListTile(
-                //       leading: Icon(Icons.book), // Icon buku
-                //       title: Text(_detailManga!.chapter![index].chapterTitle!), // Label "Chapter xxx"
-                //       onTap: () {
-                //         // Aksi yang akan diambil saat item diklik
-                //         // Misalnya, navigasi ke halaman detail chapter.
-                //       },
-                //     );
-                //   },
-                // )
                 ..._detailManga!.chapter!.map((e) {
                   return ListTile(
                     leading: Icon(Icons.book),
                     title: Text(e.chapterTitle!),
                     onTap: () {
-                      // Aksi yang akan diambil saat item diklik
-                      // Misalnya, navigasi ke halaman detail chapter.
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ReadManga(data: e.chapterEndpoint!),
+                        ),
+                      );
                     },
                   );
                 }).toList()

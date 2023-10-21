@@ -36,9 +36,9 @@ class ApiService {
     }
   }
 
-  Future<ReadChapter> readChapter() async {
+  Future<ReadChapter> readChapter(String endpoint) async {
     final response = await http.get(Uri.parse(
-        '${_baseUrl}/chapter/after-transformation-mine-and-her-wild-fantasy-chapter-70-bahasa-indonesia'
+        '${_baseUrl}/chapter/${endpoint}'
     ));
     print(response.body);
     // print(ReadChapter.fromJson(json.decode(response.body)).thumb);

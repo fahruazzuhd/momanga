@@ -30,6 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         // height: MediaQuery.of(context).size.height,
         padding: EdgeInsets.only(top: 50, left: 30, right: 30),

@@ -24,11 +24,18 @@ class CardVertical extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
-                child: Image.network(
-                  manga.thumb!,
+                borderRadius: BorderRadius.circular(10.0),
+                child: FadeInImage.assetNetwork(
+                  placeholder: 'assets/images/placeholder.png', // Gambar placeholder kustom
+                  image: manga.thumb!,
                   fit: BoxFit.cover,
-                  height: 60,
+                  width: 120,
+                  imageErrorBuilder: (context, error, stackTrace) {
+                    return Image.asset(
+                        'assets/images/placeholder.png',
+                      width: 120,
+                    ); // Gambar error kustom
+                  },
                 ),
               ),
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:momanga/data/model/manga.dart';
+import 'package:momanga/pages/ui/search_page.dart';
 import 'package:momanga/pages/widget/card_horizontal.dart';
 import 'package:momanga/pages/widget/card_vertical.dart';
 
@@ -71,13 +72,25 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                     SizedBox(height: 25),
-                    CupertinoSearchTextField(
-                      onChanged: (String value) {
-                        print('The text has changed to: $value');
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
                       },
-                      onSubmitted: (String value) {
-                        print('Submitted text: $value');
-                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: CupertinoColors.lightBackgroundGray,
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(CupertinoIcons.search),
+                            SizedBox(width: 8),
+                            Text('Tap to Search'),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),

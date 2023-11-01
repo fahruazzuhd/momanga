@@ -53,8 +53,8 @@ class _ReadMangaState extends State<ReadManga> {
                         var mangaChapter = snapshot.data?.chapterImage?[index];
                         return Image.network(
                           mangaChapter!.chapterImageLink!,
-                          height: MediaQuery.of(context).size.height,
-                          fit: BoxFit.fill,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover,
                         );
                       },
                     );
